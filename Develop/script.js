@@ -49,7 +49,14 @@ function generatePassword() {
   if (confirmLowercase) {
     passwordCharacters = passwordCharacters.concat(alphaLower);
   }
-  
+    console.log(passwordCharacters);
+    var randomPassword = "";
+
+    for (var i = 0; i < confirmLength; i++) {
+      randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+      console.log(randomPassword)
+    }
+    return randomPassword
   }
 // Write password to the #password input
 function writePassword() {
