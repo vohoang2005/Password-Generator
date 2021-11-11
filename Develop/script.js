@@ -35,10 +35,7 @@ function generatePassword() {
       var confirmuppercase = window.confirm("Click OK to include UpperCase Characters");
       var confirmlowercase = window.confirm("Click OK to include LowerCase Characters");
     }
-
-
-
-    // Assign an action to the password parameters NEED TO FIX THIS
+    // Assign an action to the password parameters
     var passwordCharacters = [];
       
     if (confirmsymbol) {
