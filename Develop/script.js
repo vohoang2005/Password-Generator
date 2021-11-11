@@ -10,6 +10,7 @@ var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M
 // Choices to be selected or not.
 var confirmLength = "";
 var confirmSymbol;
+var confirmNumeric;
 var confirmUppercase;
 var confirmLowercase;
 
@@ -19,15 +20,28 @@ function generatePassword() {
     window.alert("Your password length must be between 8-128 characters, please try again.");
     var confirmLength = window.prompt("How many characters would you like your password to be?")
     }
- 
+  // To confirm the listed choices.
+  var confirmSymbol = window.confirm("Click OK to include Special Characters");
+  var confirmNumeric = window.confirm("Click OK to include Numeric Characters");
+  var confirmUppercase = window.confirm("Click OK to include UpperCase Characters");
+  var confirmLowercase = window.confirm("Click OK to include LowerCase Characters");
 
-
-
+  // Reloop if not at least 1 choice is choosen.
+    while(confirmUppercase === false && confirmLowercase === false && confirmSymbol === false && confirmNumeric === false) {
+      window.alert("You must choose at least one parameter");
+      //Rerun the loop.
+      var confirmSymbol = window.confirm("Click OK to include Special Characters");
+      var confirmNumeric = window.confirm("Click OK to include Numeric Characters");
+      var confirmUppercase = window.confirm("Click OK to include UpperCase Characters");
+      var confirmLowercase = window.confirm("Click OK to include LowerCase Characters");
+    }
+    
+  }
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-}
 };
+
