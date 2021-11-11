@@ -35,7 +35,21 @@ function generatePassword() {
       var confirmUppercase = window.confirm("Click OK to include UpperCase Characters");
       var confirmLowercase = window.confirm("Click OK to include LowerCase Characters");
     }
-    
+    //Now creating the password via choices picked.
+    var passwordCharacters = [];
+  if (confirmSymbol) {
+    passwordCharacters = passwordCharacters.concat(symbol);
+  }
+  if (confirmNumeric) {
+    passwordCharacters = passwordCharacters.concat(number);
+  }
+  if (confirmUppercase) {
+    passwordCharacters = passwordCharacters.concat(alphaUpper);
+  }
+  if (confirmLowercase) {
+    passwordCharacters = passwordCharacters.concat(alphaLower);
+  }
+  
   }
 // Write password to the #password input
 function writePassword() {
