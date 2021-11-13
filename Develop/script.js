@@ -1,4 +1,4 @@
-//Assignment Code + Event Listener to prompt questions when button pushed
+//Assignment Code + Event Listener to prompt questions when button pushed.
 document.querySelector("#generate").addEventListener("click", writePassword);
 
 // Listed all possible outcome.
@@ -15,7 +15,7 @@ var confirmuppercase;
 var confirmlowercase;
 
 function generatePassword() {
-  var confirmlength = window.prompt("How many characters would you like your password to be?");
+  var confirmlength = window.prompt("How many characters would you like your password to be, please select between 8 and 128.");
   while (confirmlength <= 7 || confirmlength > 128) {
     window.alert("Your password length must be between 8-128 characters, please try again.");
     var confirmlength = window.prompt("How many characters would you like your password to be?");
@@ -35,7 +35,7 @@ function generatePassword() {
       var confirmuppercase = window.confirm("Click OK to include UpperCase Characters");
       var confirmlowercase = window.confirm("Click OK to include LowerCase Characters");
     }
-    // Assign an action to the password parameters
+    // Assign an action to the password parameters.
     var passwordCharacters = [];
       
     if (confirmsymbol) {
@@ -53,8 +53,7 @@ function generatePassword() {
     if (confirmuppercase) {
       passwordCharacters = passwordCharacters.concat(alphaupper);
     }
-    console.log(passwordCharacters);
-
+    
     var randomPassword = "";
 
     for (var i = 0; i < confirmlength; i++) {
