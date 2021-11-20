@@ -16,7 +16,7 @@ var confirmlowercase;
 
 function generatePassword() {
   var confirmlength = window.prompt("How many characters would you like your password to be, please select between 8 and 128.");
-  while (confirmlength <= 7 || confirmlength > 128) {
+  while (confirmlength <= 7 || confirmlength > 128 || isNaN(confirmlength) === true) {
     window.alert("Your password length must be between 8-128 characters, please try again.");
     var confirmlength = window.prompt("How many characters would you like your password to be?");
     }
