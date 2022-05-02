@@ -15,6 +15,9 @@ body,
 body {
   font-family: sans-serif;
   background-color: #f9fbfd;
+  display: flex;
+  justify-content: center;
+  align-items:center;
 }
 
 .wrapper {
@@ -38,7 +41,7 @@ header {
   color: hsl(206, 17%, 28%);
   font-size: 18px;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 8900px;
   padding: 30px 40px;
 }
 
@@ -55,15 +58,9 @@ header {
 }
 
 .card-footer {
-  text-align: center;
-}
-
-.card-footer::before {
-  content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
 }
 
 .card-footer::after {
@@ -88,6 +85,10 @@ header {
   cursor: pointer;
 }
 
+.btn:hover {
+  background-color: rgb(250, 3, 3);
+}
+
 button[enabled] {
   cursor: default;
   background: #c0c7cf;
@@ -97,7 +98,7 @@ button[enabled] {
   float: right;
 }
 
-#password {
+.password-display {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -107,7 +108,7 @@ button[enabled] {
   padding-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 85px;
+  padding-bottom: 15px;
   font-size: 1.2rem;
   text-align: center;
   margin-top: 10px;
@@ -117,6 +118,8 @@ button[enabled] {
   resize: none;
   overflow: hidden;
 }
+
+
 
 @media (max-width: 690px) {
   .btn {

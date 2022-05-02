@@ -1,72 +1,59 @@
-//Assignment Code + Event Listener to prompt questions when button pushed.
-document.querySelector("#generate").addEventListener("click", writePassword);
+const characterAmountRange = document.getElementById('characterAmountRange')
+const characterAmountNumber = document.getElementById('characterAmountNumber')
+const includeUppercaseElement = document.getElementById('includeUppercase')
+const includeNumbersElement = document.getElementById('includeNumbers')
+const includeSymbolsElement = document.getElementById('includeSymbols')
+const form = document.getElementById('passwordGeneratorForm')
+const passwordDisplay = document.getElementById('passwordDisplay')
 
-// Listed all possible outcome.
-var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var symbol = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
-var alphalower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var alphaupper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90)
+const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122)
+const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57)
+const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
+  arrayFromLowToHigh(58, 64)
+).concat(
+  arrayFromLowToHigh(91, 96)
+).concat(
+  arrayFromLowToHigh(123, 126)
+)
 
-// Choices to be selected or not.
-var confirmlength = "";
-var confirmsymbol;
-var confirmnumeric;
-var confirmuppercase;
-var confirmlowercase;
+characterAmountNumber.addEventListener('input', syncCharacterAmount)
+characterAmountRange.addEventListener('input', syncCharacterAmount)
 
-function generatePassword() {
-  var confirmlength = window.prompt("How many characters would you like your password to be, please select between 8 and 128.");
-  while (confirmlength <= 7 || confirmlength > 128 || isNaN(confirmlength) === true) {
-    window.alert("Your password length must be between 8-128 characters, please try again.");
-    var confirmlength = window.prompt("How many characters would you like your password to be?");
-    }
-  // To confirm the listed choices.
-  var confirmsymbol = window.confirm("Click OK to include Special Characters");
-  var confirmnumeric = window.confirm("Click OK to include Numeric Characters");
-  var confirmuppercase = window.confirm("Click OK to include UpperCase Characters");
-  var confirmlowercase = window.confirm("Click OK to include LowerCase Characters");
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  const characterAmount = characterAmountNumber.value
+  const includeUppercase = includeUppercaseElement.checked
+  const includeNumbers = includeNumbersElement.checked
+  const includeSymbols = includeSymbolsElement.checked
+  const password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols)
+  passwordDisplay.innerText = password
+})
 
-  // Reloop if not at least 1 choice is choosen.
-    while(confirmuppercase === false && confirmlowercase === false && confirmsymbol === false && confirmnumeric === false) {
-      window.alert("You must choose at least one parameter");
-      //Rerun the loop.
-      var confirmsymbol = window.confirm("Click OK to include Special Characters");
-      var confirmnumeric = window.confirm("Click OK to include Numeric Characters");
-      var confirmuppercase = window.confirm("Click OK to include UpperCase Characters");
-      var confirmlowercase = window.confirm("Click OK to include LowerCase Characters");
-    }
-    // Assign an action to the password parameters.
-    var passwordCharacters = [];
-      
-    if (confirmsymbol) {
-      passwordCharacters = passwordCharacters.concat(symbol);
-    }
-
-    if (confirmnumeric) {
-      passwordCharacters = passwordCharacters.concat(number);
-    }
-      
-    if (confirmlowercase) {
-      passwordCharacters = passwordCharacters.concat(alphalower);
-    }
-
-    if (confirmuppercase) {
-      passwordCharacters = passwordCharacters.concat(alphaupper);
-    }
-    
-    var randomPassword = "";
-
-    for (var i = 0; i < confirmlength; i++) {
-      randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
-      console.log(randomPassword)
-    }
-    return randomPassword;
+function generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols) {
+  let charCodes = LOWERCASE_CHAR_CODES
+  if (includeUppercase) charCodes = charCodes.concat(UPPERCASE_CHAR_CODES)
+  if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CHAR_CODES)
+  if (includeNumbers) charCodes = charCodes.concat(NUMBER_CHAR_CODES)
+  
+  const passwordCharacters = []
+  for (let i = 0; i < characterAmount; i++) {
+    const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
+    passwordCharacters.push(String.fromCharCode(characterCode))
   }
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  return passwordCharacters.join('')
+}
 
-  passwordText.value = password;
-};
+function arrayFromLowToHigh(low, high) {
+  const array = []
+  for (let i = low; i <= high; i++) {
+    array.push(i)
+  }
+  return array
+}
 
+function syncCharacterAmount(e) {
+  const value = e.target.value
+  characterAmountNumber.value = value
+  characterAmountRange.value = value
+}
