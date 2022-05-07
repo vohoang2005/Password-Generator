@@ -1,6 +1,6 @@
 # Password Generator
 
-### The main purpose of this assignment is to create a Password Generator that includes Uppercase Letter, Numbers, and Symbols to generate a difficult password. Securities nowaday are being hacked, and with this complex password generator, you do not have to worry about the password not being complex enough.
+### The main purpose of this assignment is to create a Password Generator that includes Uppercase Letter, Numbers, and Symbols to generate a difficult password. Securities nowaday is very important, and hacker are using Bruteforce attack, and with this complex password generator, you do not have to worry about the password not being complex enough.
 
 ~~~ 
 The Assignment was given to generate password App via Windows.Prompt/Windows.Alert/Windows.Confirm. 
