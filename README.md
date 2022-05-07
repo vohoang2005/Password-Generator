@@ -1,26 +1,15 @@
-# Password Generator Starter Code
-## To get started with creating the Random Generated Password please have
-## following ready.
+# Password Generator
 
-1. Install VScode - You can install VScode here at this
-* link: https://code.visualstudio.com/
+## The main purpose of this assignment is to create a Password Generator that includes Uppercase Letter, Numbers, and Symbols to generate a difficult password. Securities nowaday are being hacked, and with this complex password generator, you do not have to worry about the password not being complex enough.
 
-Once VS Code is installed, you need to create 3 files, 1 for HTML, 1 for CSS, and 1 for Javascript. 
+~~~ 
+The Assignment was given to generate password App via Windows.Prompt/Windows.Alert/Windows.Confirm. But as a developer, I want to make the password Generator to be more User friendly. Therefore, Instead of using the Windows Prompt/Alert/Confirm, I decided to enhance my javascript skill and uses Checkbox and Range instead. This will make it much more modern, and very simple to use.
+~~~
 
-Some Function that you might need to figure out are listed below.
-### querySelector
-### addEventListerner
-### function ()
-### window.alert
-### window.confirm
-### window.prompt
-### while
-### if, elif, else
-### length
-### Math
-### Document
+## Preview of using the Password Generator.
 
 
-## With an understanding of these main words, you can definitely create the same Password Generate as this!
 
-## Good luck!
+
+
+Created by: Chuong Vo
